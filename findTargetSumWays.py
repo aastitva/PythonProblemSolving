@@ -9,7 +9,8 @@ def fTSW_recurssion(nums, target, pos, curr_sum, memo):
     add = fTSW_recurssion(nums, target, pos+1, curr_sum + nums[pos], memo)
     # Include current number with negative sign
     subtract = fTSW_recurssion(nums, target, pos+1, curr_sum - nums[pos], memo)
-    return add + subtract
+    memo[(pos, curr_sum)] = add + subtract
+    return memo[(pos, curr_sum)]
 
 def findTargetSumWays(nums, target):
     memo = {}
